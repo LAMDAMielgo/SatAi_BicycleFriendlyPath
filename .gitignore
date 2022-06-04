@@ -131,3 +131,4 @@ dmypy.json
 
 ################ OTHER FOLDERS
 data/
+local_data/

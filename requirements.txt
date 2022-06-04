@@ -1,0 +1,2 @@
+geopandas>=0.10.1
+tensorflow==2.9.0
