@@ -307,6 +307,10 @@ def get_geographic_data(geodf_path: str, geodf_name: str):
     df = clean_geo_data(df, img_path_col='img_fname')
     df = df[cols_to_take].copy(deep=True)
 
+    df = df[~df.index.duplicated(keep='first')].copy(deep=True)  # 
+    df = df[df['cyclist_type'].notna()].copy(deep=True)          # only known cyclist types
+    df = df[df['copyright'] == '© Google']                       # only photos taken by google
+
     return df
 
 # ----------------------------------------------------------------------------
