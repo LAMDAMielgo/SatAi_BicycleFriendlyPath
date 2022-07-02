@@ -46,12 +46,77 @@ el código aquí está modulado y en vez de tirar de un archivo descargado en lo
 
 
 ---
-REQUIREMENTS
+### REQUIREMENTS
 
 Para poder usar el codigo se necesita: geopandas, numpy, pandas, requests, seaborn y StringIO.
 
 Tira de una carpeta en local para los datos en ```../data.```
 
 -----
+### DATOS
 
+Se ha dejado una copia de los datos en formato parquet. 
+Para abrirlos con geopandas: [geopandas read_parquet](!https://geopandas.org/en/stable/docs/reference/api/geopandas.read_parquet.html)
 
+Posiblemente hay que parsear las geometrías:  [object to geometry](!https://stackoverflow.com/questions/56433138/converting-a-column-of-polygons-from-string-to-geopandas-geometry)
+
+En la carpeta ```data/``` estan los siguientes archivos:
+
+* viario_ejes.parquet 
+```
+<class 'geopandas.geodataframe.GeoDataFrame'>
+RangeIndex: 150783 entries, 0 to 150782
+Data columns (total 33 columns):
+ #   Column          Non-Null Count   Dtype   
+---  ------          --------------   -----   
+ 0   id_tramo        150783 non-null  int64   
+ 1   id_vial         150783 non-null  int64   
+ 2   id_code         150783 non-null  object  
+ 3   via_code        150783 non-null  int64   
+ 4   clase_code      150783 non-null  int64   
+ 5   access_code     150783 non-null  int64   
+ 6   district_code   150783 non-null  object  
+ 7   shp_avg_width   149210 non-null  float64 
+ 8   via_name        150783 non-null  object  
+ 9   clase_deno      150783 non-null  object  
+ 10  clase_name      150783 non-null  object  
+ 11  tramo_code      150783 non-null  int64   
+ 12  tramo_name      150783 non-null  object  
+ 13  calzada_code    150783 non-null  int64   
+ 14  calzada_name    150783 non-null  object  
+ 15  access_name     150783 non-null  object  
+ 16  firme_code      150783 non-null  int64   
+ 17  firme_name      150783 non-null  object  
+ 18  ncarriles_code  150783 non-null  object  
+ 19  sentido_code    150783 non-null  int64   
+ 20  sentido_name    150783 non-null  object  
+ 21  situacion_code  150783 non-null  int64   
+ 22  situacion_name  150783 non-null  object  
+ 23  estado_code     150783 non-null  int64   
+ 24  estado_name     150783 non-null  object  
+ 25  vehic_code      150783 non-null  object  
+ 26  vehic_name      150783 non-null  object  
+ 27  orden_code      150783 non-null  object  
+ 28  orden_name      150783 non-null  object  
+ 29  district_name   150783 non-null  object  
+ 30  shp_log_width   149210 non-null  float64 
+ 31  cyclist_type    52455 non-null   object  
+ 32  geometry        150783 non-null  geometry
+dtypes: float64(2), geometry(1), int64(11), object(19)
+memory usage: 38.0+ MB
+```
+* viario_pts (mismas columnas):
+```
+<class 'geopandas.geodataframe.GeoDataFrame'>
+RangeIndex: 652228 entries, 0 to 652227
+Data columns (total 39 columns):
+ #   Column             Non-Null Count   Dtype   
+---  ------             --------------   -----   
+ 0   fid                652228 non-null  int64   
+ .   ..                 ...    ...       ...
+ 37  angle              652228 non-null  float64 
+ 38  geometry           652228 non-null  geometry
+dtypes: float64(4), geometry(1), int64(15), object(19)
+memory usage: 194.1+ MB
+```
+* viario_pts_sample: sampleado de 10000 pts del dataset anterior.
